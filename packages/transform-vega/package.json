@@ -24,7 +24,7 @@
     "@nteract/vega-embed-v2": "^1.1.0",
     "babel-runtime": "^6.26.0",
     "lodash": "^4.17.4",
-    "vega-embed": "3.16.1",
+    "vega-embed": "3.23.1",
     "vega-tooltip": "^0.13.0"
   },
   "peerDependencies": {
