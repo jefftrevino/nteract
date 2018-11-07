@@ -1,4 +1,3 @@
-/* @flow */
 import * as React from "react";
 import ReactMarkdown from "react-markdown";
 import math from "remark-math";
@@ -29,15 +28,15 @@ import {
   Cells
 } from "@nteract/presentational-components";
 
-type Props = {
-  displayOrder: Array<string>,
-  notebook: any,
-  transforms: Object,
-  theme: "light" | "dark"
+interface Props  {
+  displayOrder: Array<string>;
+  notebook: any;
+  transforms: Object;
+  theme: "light" | "dark";
 };
 
-type State = {
-  notebook: any
+interface State {
+  notebook: any;
 };
 
 export default class NotebookRender extends React.PureComponent<Props, State> {
@@ -65,7 +64,7 @@ export default class NotebookRender extends React.PureComponent<Props, State> {
     }
   }
 
-  render(): ?React$Element<any> {
+  render() {
     const notebook = this.state.notebook;
 
     // Propagated from the hide_(all)_input nbextension
@@ -133,7 +132,7 @@ export default class NotebookRender extends React.PureComponent<Props, State> {
                   inlineMath: function inlineMath(node) {
                     return <InlineMath>{node.value}</InlineMath>;
                   }
-                };
+                } as any;
                 return (
                   <Cell key={cellID}>
                     <div className="content-margin">
