@@ -16,7 +16,7 @@ import {
   emptyNotebook,
   appendCellToNotebook,
   fromJS,
-  createCodeCell
+  createCodeCell,
 } from "@nteract/commutable";
 import {
   themes,
@@ -84,7 +84,7 @@ export default class NotebookRender extends React.PureComponent<Props, State> {
     return (
       <div className="notebook-render">
         <Cells>
-          {cellOrder.map(cellID => {
+          {cellOrder.map((cellID: number) => {
             const cell = cellMap.get(cellID);
             const cellType = cell.get("cell_type");
             const source = cell.get("source");
@@ -126,10 +126,10 @@ export default class NotebookRender extends React.PureComponent<Props, State> {
               case "markdown":
                 const remarkPlugins = [math, remark2rehype, katex, stringify];
                 const remarkRenderers = {
-                  math: function blockMath(node) {
+                  math: function blockMath(node: { value: string }) {
                     return <BlockMath>{node.value}</BlockMath>;
                   },
-                  inlineMath: function inlineMath(node) {
+                  inlineMath: function inlineMath(node: { value: string}) {
                     return <InlineMath>{node.value}</InlineMath>;
                   }
                 } as any;
