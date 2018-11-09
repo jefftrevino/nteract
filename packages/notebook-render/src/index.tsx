@@ -29,9 +29,9 @@ import {
 } from "@nteract/presentational-components";
 
 interface Props  {
-  displayOrder: Array<string>;
+  displayOrder: string[];
   notebook: any;
-  transforms: Object;
+  transforms: object;
   theme: "light" | "dark";
 };
 
