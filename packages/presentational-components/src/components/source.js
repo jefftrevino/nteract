@@ -36,13 +36,15 @@ export class Source extends React.Component<SourceProps> {
     }
     else if (this.props.language === "markdown"){
       //return markdown output
-      <Markdown
-            source={
-              this.props.children
-                ? this.props.children
-                : "*Empty markdown cell, double click me to add content.*"
-            }
-          />
+      return (
+        <Markdown
+              source={
+                this.props.children
+                  ? this.props.children
+                  : "*Empty markdown cell, double click me to add content.*"
+              }
+            />
+        )
     }
     else {
     // Otherwise assume they have their own editor component
