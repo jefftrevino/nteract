@@ -1,6 +1,7 @@
 // @flow
 import * as React from "react";
 
+import Markdown from "@nteract/markdown";
 import Highlighter from "../syntax-highlighter";
 
 export type SourceProps = {
@@ -23,7 +24,7 @@ export class Source extends React.Component<SourceProps> {
     // This is primarily for use with non-editable contexts (notebook-preview)
     // to make rendering much faster (compared to codemirror)
     // Ref: https://github.com/nteract/notebook-preview/issues/20
-    if (typeof this.props.children === "string") {
+    if (typeof this.props.children === "string" && this.props.language != "markdown") {
       return (
         <Highlighter
           language={this.props.language}
@@ -33,7 +34,19 @@ export class Source extends React.Component<SourceProps> {
         </Highlighter>
       );
     }
+    else if (this.props.language === "markdown"){
+      //return markdown output
+      <Markdown
+            source={
+              source
+                ? source
+                : "*Empty markdown cell, double click me to add content.*"
+            }
+          />
+    }
+    else {
     // Otherwise assume they have their own editor component
     return <div className="input">{this.props.children}</div>;
+    }
   }
 }
