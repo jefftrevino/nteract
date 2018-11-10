@@ -38,8 +38,8 @@ export class Source extends React.Component<SourceProps> {
       //return markdown output
       <Markdown
             source={
-              source
-                ? source
+              this.props.children
+                ? this.props.children
                 : "*Empty markdown cell, double click me to add content.*"
             }
           />
